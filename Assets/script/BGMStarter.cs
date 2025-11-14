@@ -1,0 +1,26 @@
+using UnityEngine;
+using System.Collections;
+
+public class BGMStarter : MonoBehaviour
+{
+    [Header("BGMçƒê∂Ç‹Ç≈ÇÃíxâÑïbêî")]
+    public float delay = 4f;
+
+    void Start()
+    {
+        StartCoroutine(DelayedBGM(delay));
+    }
+
+    IEnumerator DelayedBGM(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        if (AudioManager.instance != null)
+        {
+            AudioManager.instance.StopBGM();           // Ç‹Ç∏í‚é~
+            AudioManager.instance.PlayBGM(true);       // ã≠êßçƒê∂
+        }
+    }
+
+
+}
